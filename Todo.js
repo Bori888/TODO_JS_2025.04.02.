@@ -7,7 +7,7 @@ export default class Todo {
     this.pElem = pElem;
     this.view();
     this.textElem = document.querySelector(".text:last-child");
-    this.OKElem = document.querySelector(".ready");
+    this.OKElem = this.textElem.querySelector(".ready");
     console.log(this.OKElem);
 
     this.deleteElem = this.textElem.querySelector(".delete:last-child");
