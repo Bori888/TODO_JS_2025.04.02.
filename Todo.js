@@ -2,8 +2,9 @@ export default class Todo {
   #text; /*Ezek a privált adattagok*/
   #index;
   constructor(text, pElem, index) {
-    this.#index = index;
     this.#text = text;
+    this.#index = index;
+
     this.pElem = pElem;
     this.view();
     this.textElem = document.querySelector(".text:last-child");
@@ -15,16 +16,17 @@ export default class Todo {
     this.remEventListener();
   }
   view() {
-    let html = `<p class="text">${this.#text}
-      <button class="ready">pipa</button>
+    let html = `
+    <p class="text">${this.#text.state ? "green" : "black"}">${this.#text.todoText}
+      <button class="ready">✔</button>
       <button class="delete">X</button>
     </p>`;
     this.pElem.insertAdjacentHTML("beforeend", html);
   }
   OKeventListener() {
     this.OKElem.addEventListener("click", () => {
-      console.log("ok");
-      this.textElem.style.color = "green";
+      const e = new CustomEvent("done", { detail: this.#index });
+      window.dispatchEvent(e);
     });
   }
   remEventListener() {

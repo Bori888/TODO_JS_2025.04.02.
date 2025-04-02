@@ -1,5 +1,5 @@
 export const TODOLIST =[
-    "1. teendő ",
-    "2. teendő "
+    {todoText:"1. teendő ",state:true},
+    {todoText:"2. teendő ",state:false},
 
 ]
